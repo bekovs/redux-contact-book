@@ -1,5 +1,8 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addContact } from '../../store/actions/contactsActions';
 
 const style = {
   box: {
@@ -29,6 +32,8 @@ const ContactAdd = () => {
   })
 
   const [showError, setShowError] = useState(false)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); //? Для предотвращения перезагрузки страницы. (submit)
@@ -36,7 +41,8 @@ const ContactAdd = () => {
       setShowError(true);
       return;
     }
-    console.log(newContact)
+    dispatch(addContact(newContact));
+    navigate('/')
   }
 
   const handleChange = (e) => {

@@ -8,7 +8,8 @@ export const getContacts = createAsyncThunk("@contacts/getContacts", async () =>
 })
 
 export const addContact = createAsyncThunk("@contacts/addContact", async (newContact, { dispatch }) => {
-  await axios.post(API, newContact);
+  let res = await axios.post(API, newContact);
+  console.log(res)
   dispatch(getContacts());
   return newContact;
 } )

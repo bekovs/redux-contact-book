@@ -3,7 +3,7 @@ import React from 'react';
 
 const ContactCard = ({contact}) => {
   return (
-    <Card sx={{ display: 'flex', width: '50%', height: '120px', justifyContent: 'space-between', m: 3 }}>
+    <Card sx={{ display: 'flex', width: '50%', height: '120px', justifyContent: 'space-between', m: 3, cursor: 'pointer' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
@@ -16,7 +16,7 @@ const ContactCard = ({contact}) => {
       </Box>
       <CardMedia
         component="img"
-        sx={{width: '40%', objectFit: 'cover', objectPosition: 'top' }}
+        sx={{width: '40%', objectFit: 'cover', objectPosition: 'top', "&:hover": {} }}
         image={contact.photo}
         alt="Live from space album cover"
       />
