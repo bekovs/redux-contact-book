@@ -28,12 +28,19 @@ const ContactAdd = () => {
     photo: '',
   })
 
+  const [showError, setShowError] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault(); //? Для предотвращения перезагрузки страницы. (submit)
+    if(!newContact.name.trim() || !newContact.phone.trim()){
+      setShowError(true);
+      return;
+    }
     console.log(newContact)
   }
 
   const handleChange = (e) => {
+    setShowError(false);
     setNewContact({
       ...newContact,
       [e.target.name]: e.target.value
@@ -65,6 +72,14 @@ const ContactAdd = () => {
         onChange={(e) => handleChange(e)}
       />
       <Button sx={style.button} variant='contained' type='submit'>Add</Button>
+      {
+        showError ? 
+        <Typography variant='h6' sx={{color:'red'}}>
+          Убедитесь что name и phone заполнены!
+        </Typography>
+        :
+        <></>
+      }
     </Box>
   );
 };
